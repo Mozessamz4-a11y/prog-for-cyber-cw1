@@ -1,1 +1,66 @@
 
+
+#.START
+
+username_saved = "admin"
+password_saved = "1234"
+
+attempts = 0
+logged_in = False
+
+# Ask the user to log in
+while attempts < 3:
+    username = input("Enter username: ")
+    password = input("Enter password: ")
+
+    if username == username_saved and password == password_saved:
+        print("Login successful!")
+        logged_in = True
+        break
+    else:
+        attempts += 1
+        print("Incorrect login details.")
+
+# Display a message after 3 failed attempts
+if not logged_in:
+    print("Account frozen for 24 hours.")
+
+# Show the menu only after a successful login
+while logged_in:
+    print("\n===== PRACTICE SECURITY MENU =====")
+    print("1. Check a password")
+    print("2. Count failed password attempts")
+    print("3. Exit")
+
+    choice = input("Choose an option: ")
+
+    if choice == "1":
+        password = input("Enter a password: ")
+
+        if password == password_saved:
+            print("Correct password!")
+        else:
+            print("Incorrect password!")
+
+    elif choice == "2":
+        incorrect = 0
+
+        # Ask for a password 3 times
+        for i in range(3):
+            password = input("Enter password: ")
+
+            if password != password_saved:
+                incorrect += 1
+
+        percentage = (incorrect / 3) * 100
+
+        print("Incorrect attempts:", incorrect)
+        print("Incorrect percentage:", percentage, "%")
+
+    elif choice == "3":
+        print("Goodbye!")
+        break
+
+    else:
+        print("Invalid option. Try again.")
+
