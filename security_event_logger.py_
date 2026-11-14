@@ -1,1 +1,43 @@
 
+# TASK 2 - SECURITY EVENT LOGGER
+
+
+USERNAME = "admin"
+PASSWORD = "Cyber123!"
+IP_ADDRESS = "192.168.1.10"
+
+
+def display_event(event_id, username, event):
+    # Generate and display a security event.
+    timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+
+    print("\n--- SECURITY EVENT LOG ---")
+    print("Event ID:", event_id)
+    print("Username:", username)
+    print("IP Address:", IP_ADDRESS)
+    print("Event:", event)
+    print("Timestamp:", timestamp)
+    print("--------------------------")
+
+
+def main():
+    event_id = 0
+
+    while True:
+        username = input("Enter username: ")
+        password = input("Enter password: ")
+
+        event_id += 1
+
+        if username == USERNAME and password == PASSWORD:
+            print("Login successful!")
+            display_event(event_id, username, "Successful Login")
+            break
+        else:
+            print("Login failed. Please try again.")
+            display_event(event_id, username, "Failed Login")
+
+
+if __name__ == "__main__":
+    main()
+
